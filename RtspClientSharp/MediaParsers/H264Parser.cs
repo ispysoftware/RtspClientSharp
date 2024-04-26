@@ -118,9 +118,10 @@ namespace RtspClientSharp.MediaParsers
                 offset += RawH264Frame.StartMarker.Length;
 
             int nalUnitType = byteSegment.Array[offset] & 0x1F;
+
             bool nri = ((byteSegment.Array[offset] >> 5) & 3) == 0;
 
-            if (!(nalUnitType > 0 && nalUnitType < 24))
+            if (!(nalUnitType > -1 && nalUnitType < 32))
                 throw new H264ParserException($"Invalid nal unit type: {nalUnitType}");
 
             if (nalUnitType == 7)
@@ -278,6 +279,7 @@ namespace RtspClientSharp.MediaParsers
 
         private static FrameType GetFrameType(int sliceType)
         {
+            //Debug.WriteLine($"slicetype:{sliceType}");
             if (sliceType == 0 || sliceType == 5)
                 return FrameType.PredictionFrame;
             if (sliceType == 2 || sliceType == 7)

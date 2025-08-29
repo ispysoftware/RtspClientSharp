@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace RtspClientSharp.MediaParsers
 {
-    [Serializable]
     public class MediaPayloadParserException : Exception
     {
         public MediaPayloadParserException()
@@ -15,12 +14,6 @@ namespace RtspClientSharp.MediaParsers
         }
 
         public MediaPayloadParserException(string message, Exception inner) : base(message, inner)
-        {
-        }
-
-        protected MediaPayloadParserException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
         {
         }
     }

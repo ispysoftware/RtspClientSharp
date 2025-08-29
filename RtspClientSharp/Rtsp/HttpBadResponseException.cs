@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 
 namespace RtspClientSharp.Rtsp
 {
-    [Serializable]
     public class HttpBadResponseException : Exception
     {
         public HttpBadResponseException()
@@ -15,12 +14,6 @@ namespace RtspClientSharp.Rtsp
         }
 
         public HttpBadResponseException(string message, Exception inner) : base(message, inner)
-        {
-        }
-
-        protected HttpBadResponseException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
         {
         }
     }

@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 
 namespace RtspClientSharp.Rtsp
 {
-    [Serializable]
     public class HttpBadResponseCodeException : Exception
     {
         public HttpStatusCode Code { get; }
@@ -13,12 +12,6 @@ namespace RtspClientSharp.Rtsp
             : base($"Bad response code: {code}")
         {
             Code = code;
-        }
-
-        protected HttpBadResponseCodeException(
-            SerializationInfo info,
-            StreamingContext context) : base(info, context)
-        {
         }
     }
 }
